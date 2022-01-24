@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
     'Subway'
   ];
 
-  int currentIndex = 3;
+  int? currentIndex;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,11 +34,12 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('What do you want to eat?'),
-              Text(
-                restaurants[currentIndex],
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
+              if (currentIndex != null)
+                Text(
+                  restaurants[currentIndex!],
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
               ElevatedButton(
                 onPressed: () {
                   updateIndex();
